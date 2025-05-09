@@ -63,15 +63,9 @@ jobs:
           echo $MOONBIT_INSTALL_VERSION
         shell: bash
 
-      - name: set my_home on unix
-        if : ${{ matrix.os.name != 'windows-latest' }}
+      - name: set my_home
         run: |
-          echo "my_home=$(echo $HOME)" >> my_home.txt
-      
-      - name: set my_home on windows
-        if : ${{ matrix.os.name != 'windows-latest' }}
-        run: |
-          echo "my_home=$HOME" >> my_home.txt      
+          echo $HOME>> my_home.txt      
 
       - name: Set Github Action Global Variable
         id: global
