@@ -65,7 +65,7 @@ jobs:
 
       - name: set my_home
         run: |
-          echo $HOME>> my_home.txt      
+          echo $HOME >> my_home.txt      
 
       - name: Set Github Action Global Variable
         id: global
