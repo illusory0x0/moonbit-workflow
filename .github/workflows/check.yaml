@@ -123,7 +123,7 @@ jobs:
 
       - name: add env path 
         run: |
-          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+          echo "$home/.moon/bin" >> $GITHUB_PATH
         shell: bash
       
 
