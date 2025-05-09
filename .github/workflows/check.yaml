@@ -79,7 +79,7 @@ jobs:
         run: |
           echo "year_week=$(/bin/date -u "+%Y-%V")" >> $GITHUB_OUTPUT
           echo "year_month_day=$(/bin/date -u "+%Y-%m-%d")" >> $GITHUB_OUTPUT
-          echo "home=$(echo $HOME)" >> $GITHUB_OUTPUT
+          echo "home=$(echo $my_home)" >> $GITHUB_OUTPUT
         shell: bash 
 
 
@@ -121,15 +121,11 @@ jobs:
         run: |
           Set-ExecutionPolicy RemoteSigned -Scope CurrentUser; irm https://cli.moonbitlang.com/install/powershell.ps1 | iex
 
-      - name: add env path on unix
-        if: ${{ matrix.os.name != 'windows-latest' }}
+      - name: add env path 
         run: |
           echo "$HOME/.moon/bin" >> $GITHUB_PATH
-
-      - name: add env path on windows
-        if: ${{ matrix.os.name == 'windows-latest' }}
-        run: |
-          "C:\Users\runneradmin\.moon\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
+        shell: bash
+      
 
       - name: moon version
         run: |
