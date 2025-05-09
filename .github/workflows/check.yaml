@@ -94,7 +94,7 @@ jobs:
 
       # every week
       - name: cache moonbit toolchain pre-release on unix
-        if: ${ matrix.version == 'pre-release' }}
+        if: ${{ matrix.version == 'pre-release' }}
         id: cache-moonbit-toolchain-pre-release
         uses: actions/cache@v4
         with: 
