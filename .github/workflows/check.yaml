@@ -78,7 +78,7 @@ jobs:
         run: |
           echo "year_week=$(/bin/date -u "+%Y-%V")" >> $GITHUB_OUTPUT
           echo "year_month_day=$(/bin/date -u "+%Y-%m-%d")" >> $GITHUB_OUTPUT
-          echo "home=$(echo $HOME)" >> $GITHUB_OUTPUT
+          echo "home=$(echo $my_home)" >> $GITHUB_OUTPUT
         shell: bash 
 
 
