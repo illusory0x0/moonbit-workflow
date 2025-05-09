@@ -66,19 +66,19 @@ jobs:
       - name: set my_home on unix
         if : ${{ matrix.os.name != 'windows-latest' }}
         run: |
-          echo "my_home=$(echo $HOME)" >> $GITHUB_ENV
+          echo "my_home=$(echo $HOME)" >> my_home.txt
       
       - name: set my_home on windows
         if : ${{ matrix.os.name != 'windows-latest' }}
         run: |
-          echo "my_home=$HOME" >> $ENV:GITHUB_ENV      
+          echo "my_home=$HOME" >> my_home.txt      
 
       - name: Set Github Action Global Variable
         id: global
         run: |
           echo "year_week=$(/bin/date -u "+%Y-%V")" >> $GITHUB_OUTPUT
           echo "year_month_day=$(/bin/date -u "+%Y-%m-%d")" >> $GITHUB_OUTPUT
-          echo "home=$(echo $my_home)" >> $GITHUB_OUTPUT
+          echo "home=$(cat my_home.txt)" >> $GITHUB_OUTPUT
         shell: bash 
 
 
