@@ -78,7 +78,7 @@ jobs:
 
 
       # every week
-      - name: cache moonbit toolchain stable on unix
+      - name: cache moonbit toolchain stable
         if: ${{ matrix.version == 'stable' }}
         id: cache-moonbit-toolchain-stable
         uses: actions/cache@v4
@@ -87,7 +87,7 @@ jobs:
           key: "${{ matrix.os.name }}-${{ matrix.version }}-${{ steps.global.outputs.year_week }}"
 
       # every week
-      - name: cache moonbit toolchain pre-release on unix
+      - name: cache moonbit toolchain pre-release
         if: ${{ matrix.version == 'pre-release' }}
         id: cache-moonbit-toolchain-pre-release
         uses: actions/cache@v4
@@ -96,7 +96,7 @@ jobs:
           key: "${{ matrix.os.name }}-${{ matrix.version }}-${{ steps.global.outputs.year_week }}"
 
       # every day
-      - name: cache moonbit toolchain bleeding on unix
+      - name: cache moonbit toolchain bleeding 
         if: ${{ matrix.version == 'bleeding' }}
         id: cache-moonbit-toolchain-bleeding
         uses: actions/cache@v4
