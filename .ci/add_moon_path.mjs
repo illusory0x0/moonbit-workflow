@@ -1,3 +1,5 @@
+let platform = os.platform()
+
 let github_path = process.env["GITHUB_PATH"]
 if (platform === 'win32') {
   fs.appendFileSync(github_path,"C:\\Users\\runneradmin\\.moon\\bin")
