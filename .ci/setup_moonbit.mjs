@@ -25,9 +25,9 @@ console.log(out.toString())
 let home_path = null
 
 if (platform == 'win32') {
-  home_path_buf = cp.execSync(`pwsh -c "echo $HOME"`)
+  home_path = cp.execSync(`pwsh -c "echo $HOME"`)
 } else {
-  home_path_buf = cp.execSync("echo $HOME")
+  home_path = cp.execSync("echo $HOME")
 }
 
 
