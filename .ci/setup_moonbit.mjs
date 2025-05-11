@@ -33,4 +33,8 @@ if (platform == 'win32') {
 
 let github_path = process.env["GITHUB_PATH"]
 
+
+console.log(github_path)
+
+
 fs.appendFileSync(github_path, `${home_path.toString()}/.moon/bin`)
