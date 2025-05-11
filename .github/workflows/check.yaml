@@ -61,7 +61,11 @@ jobs:
       - name: install moonbit toolchain
         if: ${{ steps.cache-moonbit-toolchain.outputs.cache-hit != 'true' }}
         run: |
-          node .ci/setup_moonbit.mjs
+          node .ci/setup_moon.mjs
+      
+      - name: add moonbit path
+        run: |
+          node .ci/add_moon_path.mjs
 
       - name: moon version
         run: |
