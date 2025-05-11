@@ -52,8 +52,7 @@ jobs:
           node .ci/set_global.mjs
         shell: bash 
 
-      # every week
-      - name: cache moonbit toolchain every week
+      - name: cache moonbit toolchain
         id: cache-moonbit-toolchain
         uses: actions/cache@v4
         with: 
@@ -61,6 +60,7 @@ jobs:
           key: "${{ matrix.os.name }}-${{ matrix.version }}-${{ steps.global.outputs.key }}"
 
       - name: install moonbit toolchain
+        if: ${{ steps.cache-moonbit-toolchain.outputs.cache-hit != 'true' }}
         run: |
           node .ci/setup_moonbit.mjs
 
