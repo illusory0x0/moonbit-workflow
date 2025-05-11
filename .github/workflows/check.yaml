@@ -46,35 +46,19 @@ jobs:
           echo "MOONBIT_INSTALL_VERSION=${{ matrix.version }}" >> $GITHUB_ENV
         shell: bash
 
-      - name: set my_home
-        run: |
-          echo $HOME >> my_home.txt      
-
       - name: Set Github Action Global Variable
         id: global
         run: |
-          echo "year_week=$(/bin/date -u "+%Y-%V")" >> $GITHUB_OUTPUT
-          echo "year_month_day=$(/bin/date -u "+%Y-%m-%d")" >> $GITHUB_OUTPUT
-          echo "home=$(cat my_home.txt)" >> $GITHUB_OUTPUT
+          node .ci/set_global.mjs
         shell: bash 
 
       # every week
-      # - name: cache moonbit toolchain every week
-      #   if: ${{ matrix.version == 'stable' ||  matrix.version == 'pre-release'  }}
-      #   id: cache-moonbit-toolchain-every-week
-      #   uses: actions/cache@v4
-      #   with: 
-      #     path: "${{ steps.global.outputs.home }}/.moon"
-      #     key: "${{ matrix.os.name }}-${{ matrix.version }}-${{ steps.global.outputs.year_week }}"
-
-      # # every day
-      # - name: cache moonbit toolchain every day 
-      #   if: ${{ matrix.version == 'bleeding' }}
-      #   id: cache-moonbit-toolchain-every-day
-      #   uses: actions/cache@v4
-      #   with: 
-      #     path: "${{ steps.global.outputs.home }}/.moon"
-      #     key: "${{ matrix.os.name }}-${{ matrix.version }}-${{ steps.global.outputs.year_month_day }}"
+      - name: cache moonbit toolchain every week
+        id: cache-moonbit-toolchain
+        uses: actions/cache@v4
+        with: 
+          path: "${{ steps.global.outputs.home }}/.moon"
+          key: "${{ matrix.os.name }}-${{ matrix.version }}-${{ steps.global.outputs.key }}"
 
       - name: install moonbit toolchain
         run: |
