@@ -30,16 +30,9 @@ if (platform == 'win32') {
   home_path = cp.execSync("echo $HOME")
 }
 
-
 let github_path = process.env["GITHUB_PATH"]
-
-
-console.log(github_path)
-
-let buf = fs.readFileSync(github_path)
-console.log(buf.toString())
-
-fs.appendFileSync(github_path, `${home_path.toString()}/.moon/bin`)
-
-buf = fs.readFileSync(github_path)
-console.log(buf.toString())
+if (platform === 'win32') {
+  fs.appendFileSync(github_path,"C:\\Users\\runneradmin\\.moon\\bin")
+} else {
+  fs.appendFileSync(github_path,"~/.moon/bin")
+}
