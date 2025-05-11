@@ -32,6 +32,7 @@ jobs:
           # bleeding check
           # 1. install latest toolchain
           # 2. install latest core library from github.com
+          
         version: [stable,pre-release,bleeding]
       fail-fast: false
     runs-on: ${{ matrix.os.name }}
