@@ -37,8 +37,9 @@ let github_path = process.env["GITHUB_PATH"]
 console.log(github_path)
 
 let buf = fs.readFileSync(github_path)
-
-
 console.log(buf.toString())
 
 fs.appendFileSync(github_path, `${home_path.toString()}/.moon/bin`)
+
+buf = fs.readFileSync(github_path)
+console.log(buf.toString())
