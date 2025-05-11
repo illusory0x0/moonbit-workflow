@@ -11,13 +11,18 @@ let out = null
 
 if (platform === 'win32') {
   out = cp.execSync(`pwsh -c "Set-ExecutionPolicy RemoteSigned -Scope CurrentUser; irm https://cli.moonbitlang.com/install/powershell.ps1 | iex"`);
-} else if (platform !== undefined) {
-  out = cp.execSync(`curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s ${version}`);
+} else {
+  let ver = ""
+
+  if (version !== undefined) {
+    ver = version
+  }
+  out = cp.execSync(`curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s ${ver}`);
 }
 
 console.log(out.toString())
 
-let home_path = null 
+let home_path = null
 
 if (platform == 'win32') {
   home_path_buf = cp.execSync(`pwsh -c "echo $HOME"`)
@@ -29,4 +34,4 @@ if (platform == 'win32') {
 let github_path = process.env["GITHUB_PATH"]
 
 
-fs.writeFileSync(github_path,home_path)
+fs.writeFileSync(github_path, home_path)
