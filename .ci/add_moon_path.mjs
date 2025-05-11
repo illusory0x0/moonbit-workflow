@@ -1,3 +1,7 @@
+import * as os from 'node:os'
+import * as cp from 'node:child_process'
+import * as fs from 'node:fs'
+
 let platform = os.platform()
 
 let github_path = process.env["GITHUB_PATH"]
