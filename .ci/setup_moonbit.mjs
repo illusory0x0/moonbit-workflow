@@ -22,14 +22,6 @@ if (platform === 'win32') {
 
 console.log(out.toString())
 
-let home_path = null
-
-if (platform == 'win32') {
-  home_path = cp.execSync(`pwsh -c "echo $HOME"`)
-} else {
-  home_path = cp.execSync("echo $HOME")
-}
-
 let github_path = process.env["GITHUB_PATH"]
 if (platform === 'win32') {
   fs.appendFileSync(github_path,"C:\\Users\\runneradmin\\.moon\\bin")
